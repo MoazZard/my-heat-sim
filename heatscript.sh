@@ -3,8 +3,8 @@
 #SBATCH --export=ALL
 #SBATCH -p course
 #SBATCH -t 02:00:00
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=32
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=8
 #SBATCH --cpus-per-task=1
 
 module load intel/oneapi-hpc-toolkit-2024.2
