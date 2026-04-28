@@ -4,8 +4,8 @@
 #SBATCH -p course
 #SBATCH -t 02:00:00
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1 // 1 mpi rank
-#SBATCH --cpus-per-task=32 // 32 threads for OpenMP
+#SBATCH --ntasks-per-node=32
+#SBATCH --cpus-per-task=1
 
 module load intel/oneapi-hpc-toolkit-2024.2
 module load mpi/2021.13
@@ -32,6 +32,7 @@ ITER=1000000
 # Strong scaling uses the SAME input file for every run.
 # Per Section 3.4: input_K.dat where K is number of values.
 
+: <<'BLOCK'
 K_STRONG=1
 INPUT_STRONG="input_${K_STRONG}.dat"
 
@@ -48,9 +49,10 @@ do
     /usr/bin/time -f "Threads=$T Real=%e User=%U CPU=%P" \
     ./heat_nearly $N $ITER $INPUT_STRONG $OUTPUT_STRONG
 done
+BLOCK
 
 # -----------------------------------
-# Set fastest thread count (up to 8)
+# Set fastest thread count (8th is the fastest)
 # -----------------------------------
 BEST_THREADS=8
 
@@ -60,7 +62,6 @@ BEST_THREADS=8
 # Weak scaling: "Ensure you use as many temperatures as there are ranks"
 # This means K must equal P (Ranks).
 
-: <<'BLOCK'
 echo ""
 echo "===== MPI WEAK SCALING ====="
 export OMP_NUM_THREADS=$BEST_THREADS
@@ -82,4 +83,3 @@ echo ""
 echo "====================================="
 echo "Benchmark Complete: $(date)"
 echo "====================================="
-BLOCK

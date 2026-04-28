@@ -1,0 +1,115 @@
+=====================================
+COMP328 Benchmark Started: Wed 29 Apr 00:05:53 BST 2026
+=====================================
+cc -std=c11 -O3 -fopenmp -lm file_reader.c heat.c main_nearly.c -o "heat_nearly"
+Built: heat nearly
+mpicc -std=c11 -O3 -fopenmp -lm file_reader.c heat.c main_mpi.c -o "heat_complete"
+Built: heat complete
+
+===== MPI WEAK SCALING =====
+Running Weak Scaling: Ranks=1 Threads=8
+Converged after 368428 iterations
+Converged after 371216 iterations
+Converged after 361779 iterations
+Converged after 343441 iterations
+
+File opened, writing dims
+
+Writing output data
+Ranks=1 Real=648.19 User=0.02 CPU=0%
+Running Weak Scaling: Ranks=2 Threads=8
+Converged after 406606 iterations
+Converged after 417951 iterations
+
+File opened, writing dims
+
+Writing output data
+Ranks=2 Real=195.05 User=0.01 CPU=0%
+Running Weak Scaling: Ranks=4 Threads=8
+Converged after 402964 iterations
+Converged after 407893 iterations
+Converged after 411706 iterations
+Converged after 415833 iterations
+
+File opened, writing dims
+
+Writing output data
+Ranks=4 Real=177.23 User=0.01 CPU=0%
+Running Weak Scaling: Ranks=8 Threads=8
+Converged after 393021 iterations
+Converged after 394707 iterations
+Converged after 399567 iterations
+Converged after 404810 iterations
+Converged after 407292 iterations
+Converged after 393137 iterations
+Converged after 396800 iterations
+Converged after 393137 iterations
+
+File opened, writing dims
+
+Writing output data
+Ranks=8 Real=158.59 User=0.01 CPU=0%
+Running Weak Scaling: Ranks=16 Threads=8
+Converged after 395564 iterations
+Converged after 396394 iterations
+Converged after 387776 iterations
+Converged after 390971 iterations
+Converged after 374215 iterations
+Converged after 408931 iterations
+Converged after 415833 iterations
+Converged after 415088 iterations
+Converged after 387918 iterations
+Converged after 405179 iterations
+Converged after 406813 iterations
+Converged after 411360 iterations
+Converged after 413208 iterations
+Converged after 398551 iterations
+Converged after 415636 iterations
+Converged after 406675 iterations
+
+File opened, writing dims
+
+Writing output data
+Ranks=16 Real=214.71 User=0.01 CPU=0%
+Running Weak Scaling: Ranks=32 Threads=8
+Converged after 386767 iterations
+Converged after 380306 iterations
+Converged after 398832 iterations
+Converged after 397592 iterations
+Converged after 387492 iterations
+Converged after 381588 iterations
+Converged after 403043 iterations
+Converged after 413903 iterations
+Converged after 382467 iterations
+Converged after 379545 iterations
+Converged after 379156 iterations
+Converged after 395564 iterations
+Converged after 405615 iterations
+Converged after 402481 iterations
+Converged after 388197 iterations
+Converged after 417540 iterations
+Converged after 398925 iterations
+Converged after 396699 iterations
+Converged after 405973 iterations
+Converged after 393708 iterations
+Converged after 409372 iterations
+Converged after 408547 iterations
+Converged after 393481 iterations
+Converged after 386914 iterations
+Converged after 413797 iterations
+Converged after 408995 iterations
+Converged after 389422 iterations
+Converged after 376040 iterations
+Converged after 400892 iterations
+Converged after 416937 iterations
+Converged after 417951 iterations
+
+File opened, writing dims
+
+Writing output data
+Converged after 409559 iterations
+Ranks=32 Real=269.40 User=0.02 CPU=0%
+
+=====================================
+Benchmark Complete: Wed 29 Apr 00:33:37 BST 2026
+=====================================
