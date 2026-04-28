@@ -3,9 +3,9 @@
 #SBATCH --export=ALL
 #SBATCH -p course
 #SBATCH -t 02:00:00
-#SBATCH --nodes=8
-#SBATCH --ntasks-per-node=4
-#SBATCH --cpus-per-task=8
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=32
+#SBATCH --cpus-per-task=1
 
 module load intel/oneapi-hpc-toolkit-2024.2
 module load mpi/2021.13
@@ -74,7 +74,7 @@ do
     echo "Running Weak Scaling: Ranks=$P Threads=$BEST_THREADS"
 
     /usr/bin/time -f "Ranks=$P Real=%e User=%U CPU=%P" \
-    mpirun -np $P ./heat_complete $N $ITER $INPUT_WEAK $OUTPUT_WEAK
+    mpirun --oversubscribe -np $P ./heat_complete $N $ITER $INPUT_WEAK $OUTPUT_WEAK 
 done
 
 echo ""
