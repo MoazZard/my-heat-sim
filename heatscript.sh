@@ -3,9 +3,9 @@
 #SBATCH --export=ALL
 #SBATCH -p course
 #SBATCH -t 02:00:00
-#SBATCH --nodes=4
-#SBATCH --ntasks-per-node=8
-#SBATCH --cpus-per-task=1
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1 // 1 mpi rank
+#SBATCH --cpus-per-task=32 // 32 threads for OpenMP
 
 module load intel/oneapi-hpc-toolkit-2024.2
 module load mpi/2021.13
@@ -60,6 +60,7 @@ BEST_THREADS=8
 # Weak scaling: "Ensure you use as many temperatures as there are ranks"
 # This means K must equal P (Ranks).
 
+: <<'BLOCK'
 echo ""
 echo "===== MPI WEAK SCALING ====="
 export OMP_NUM_THREADS=$BEST_THREADS
@@ -74,10 +75,11 @@ do
     echo "Running Weak Scaling: Ranks=$P Threads=$BEST_THREADS"
 
     /usr/bin/time -f "Ranks=$P Real=%e User=%U CPU=%P" \
-    mpirun --oversubscribe -np $P ./heat_complete $N $ITER $INPUT_WEAK $OUTPUT_WEAK 
+    mpirun -np $P ./heat_complete $N $ITER $INPUT_WEAK $OUTPUT_WEAK 
 done
 
 echo ""
 echo "====================================="
 echo "Benchmark Complete: $(date)"
 echo "====================================="
+BLOCK

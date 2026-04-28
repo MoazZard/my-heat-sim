@@ -1,6 +1,6 @@
 CC ?= gcc
 MPICC ?= mpicc
-CFLAGS ?= -std=c11 -O3
+CFLAGS ?= -std=c11 -O3 -fopenmp -lm
 
 # Sources (allow for either underscored or spaced main filenames)
 MAIN_NEARLY_UNDERSCORE = main_nearly.c
