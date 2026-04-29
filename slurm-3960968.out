@@ -1,0 +1,55 @@
+=====================================
+COMP328 Benchmark Started: Wed 29 Apr 02:09:11 BST 2026
+=====================================
+cc -std=c11 -O3 -fopenmp -lm file_reader.c heat.c main_nearly.c -o "heat_nearly"
+Built: heat nearly
+mpicc -std=c11 -O3 -fopenmp -lm file_reader.c heat.c main_mpi.c -o "heat_complete"
+Built: heat complete
+
+===== OPENMP STRONG SCALING =====
+Running Strong Scaling: Threads=1
+Converged after 368428 iterations
+
+File opened, writing dims
+
+Writing output data
+Threads=1 Real=81.43 User=80.40 CPU=99%
+Running Strong Scaling: Threads=2
+Converged after 368428 iterations
+
+File opened, writing dims
+
+Writing output data
+Threads=2 Real=44.57 User=87.62 CPU=198%
+Running Strong Scaling: Threads=4
+Converged after 368428 iterations
+
+File opened, writing dims
+
+Writing output data
+Threads=4 Real=26.31 User=104.14 CPU=397%
+Running Strong Scaling: Threads=8
+Converged after 368428 iterations
+
+File opened, writing dims
+
+Writing output data
+Threads=8 Real=19.33 User=152.44 CPU=792%
+Running Strong Scaling: Threads=16
+Converged after 368428 iterations
+
+File opened, writing dims
+
+Writing output data
+Threads=16 Real=17.40 User=275.55 CPU=1587%
+Running Strong Scaling: Threads=32
+Converged after 368428 iterations
+
+File opened, writing dims
+
+Writing output data
+Threads=32 Real=26.39 User=834.21 CPU=3163%
+
+=====================================
+Benchmark Complete: Wed 29 Apr 02:12:47 BST 2026
+=====================================
